@@ -83,5 +83,5 @@ fn str_return_func() -> String{
     let my_str: String= String::from("merhaba");
     let _ = my_str.as_bytes();
     return my_str;
-    //as
+    //asd
 }
