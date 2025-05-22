@@ -47,3 +47,12 @@ pub fn string_meta_data(){
 
 
 }
+
+
+pub fn string_with_capacity(){
+    let mut  set_a_capacity_for_string = String::with_capacity(5);
+    set_a_capacity_for_string.push_str("abcçdefgh");
+
+    let cpc_str = set_a_capacity_for_string.capacity();
+    println!("This New String created by .with_capacity() method and was set 8 but capacity overflowed and rearranged by OS {}, capacity = {}", set_a_capacity_for_string, cpc_str)
+}

@@ -6,6 +6,8 @@ mod fonksiyonlar;
 use fonksiyonlar::function_basics::{another_func,string_return_func,str_return_func,my_generic_func,my_function,my_function_basics, type_set};
 use str_data::str_val::modul_usage;  // Modülümüz içindeki fonksiyonları bu şekilde imprt ediyoruz ve kullanmaya hazır hale getiriyoruz.
 
+mod data_yapi; // Bu mod data_yapi keywordü kullanmadan rust analyzer'ı veya dosyaları import etme işlemini tamamlayamıyoruz.
+
 
 
 
@@ -180,9 +182,23 @@ fn main() {
 
     {
         str_data::str_val::string_meta_data();
+
+        // String with capacity method
+
+
+        str_data::str_val::string_with_capacity();
     }
 
 
+    let arr = data_yapi::array_lists::make_array_list();
+    println!("{:#?}",arr);
+    
+
+    // Referance and Borrow Section
+    {
+
+    }
+    
 
 
 
