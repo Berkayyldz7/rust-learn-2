@@ -8,6 +8,8 @@ use str_data::str_val::modul_usage;  // Modülümüz içindeki fonksiyonları bu
 
 mod data_yapi; // Bu mod data_yapi keywordü kullanmadan rust analyzer'ı veya dosyaları import etme işlemini tamamlayamıyoruz.
 
+mod referance;
+
 
 
 
@@ -194,10 +196,43 @@ fn main() {
     println!("{:#?}",arr);
     
 
-    // Referance and Borrow Section
-    {
+    // Referance Section
 
+    {
+        let x = "hello_ i want to borrow this area on stack";
+        let y = String::from("Hello i want to be owner this area on the heap because this datas are String");
+        let mut z = y;
+        z.push_str("\nskskks"); 
+
+        println!("{}", z);
+
+        let mut v = z.clone();
+        v.push_str("\nBiz y değişkeniyle heap üzerinde bir alan tanımladık.\n Heap üzerinde çalıştığımız için borrow mekanizması değil ownership mekanizması çalışır. \n Dolayısıyla z = y dediğimizde verinin sahibi z olur ödünç alma olmaz. \n Heap üzerinde yeni bir alan tanımlayarak sahipliği değiştirmeden kullanmak istiyorsak .clone() metodunu kullanırız.");
+        println!("{}",v );
+
+        {
+           println!("{}",referance::all_referance::reference_understanding(1));
+        }
+
+
+        // Stack Overflow Error 
+        {
+            // Main() fonksiyonu main theread üzerinde çalışır ve bu thread 8MB stack memory'ye sahiptir.
+            // Eğer biz aşağıdaki gibi 10mb'lık bir array tanımlarsak "stack overflow" hatası alırız.
+
+
+            // let x = [0u8; 10_000_000];
+
+            /* thread 'main' has overflowed its stack
+               fatal runtime error: stack overflow
+                [1]    75482 abort      cargo run */
+
+            
+        }
     }
+
+
+
     
 
 
